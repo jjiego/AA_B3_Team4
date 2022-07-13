@@ -162,12 +162,12 @@ public class HistoryManager {
                     "Total charge: " + totalCharge
                             + "\tTotal Point:" + totalPoint + "\n"
             );
-            if (totalPoint >= 10) {
-                System.out.println("Congrat! You earned one free coupon");
-            }
-            if (totalPoint >= 30) {
-                System.out.println("Congrat! You earned two free coupon");
-            }
+            printTotalCoupon(totalPoint);
+        }
+
+        private void printTotalCoupon(int totalPoint) {
+           if(totalPoint >= 30) System.out.println("Congrat! You earned one free coupon");
+            else if(totalPoint >= 10) System.out.println("Congrat! You earned two free coupon");
         }
 ```
 ### 2.5 make duplicate method in one method
