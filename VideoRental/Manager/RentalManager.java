@@ -11,7 +11,7 @@ public class RentalManager {
     private List<RentalVO> rentalList;
     private List<RentalVO> CustomerRental;
 
-    RentalManager() {
+    private RentalManager() {
         rentalList = new ArrayList<RentalVO>();
     }
 

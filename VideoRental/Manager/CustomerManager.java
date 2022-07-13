@@ -9,7 +9,7 @@ public class CustomerManager {
     private static CustomerManager cMng = null;
     private List<CustomerVO> customers;
 
-    CustomerManager() {
+    private CustomerManager() {
         customers = new ArrayList<CustomerVO>();
     }
 
