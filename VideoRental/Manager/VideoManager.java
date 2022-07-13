@@ -12,7 +12,7 @@ public class VideoManager {
     private List<VideoVO> videoList;
 
 
-    VideoManager() {
+    private VideoManager() {
         videoList = new ArrayList<>();
     }
 

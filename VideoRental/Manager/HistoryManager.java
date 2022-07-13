@@ -9,7 +9,7 @@ public class HistoryManager {
     private static HistoryManager hMng = null;
     private List<RentalVO> History;
 
-    HistoryManager() {
+    private HistoryManager() {
         History = new ArrayList<>();
     }
 
