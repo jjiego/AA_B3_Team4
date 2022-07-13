@@ -19,7 +19,6 @@ public class RentalManager {
         if (rMng == null) rMng = new RentalManager();
         return rMng;
     }
-<<<<<<< HEAD
     public List<RentalVO> rentalList(String customerName){
         List<RentalVO> CustomerRental = new ArrayList<>();
 
@@ -51,6 +50,4 @@ public class RentalManager {
         rentalList.remove(rental);
     }
 
-=======
->>>>>>> 46d14ce2525e78aa42c0b66bc733dcf362301d58
 }

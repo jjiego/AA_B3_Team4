@@ -16,4 +16,4 @@ public class VRUI {
 			mng.doCommand();
 		}
 	}
-}r
+}
