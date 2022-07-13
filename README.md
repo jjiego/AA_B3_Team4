@@ -145,14 +145,14 @@ public class HistoryManager {
 ### 2.5 make duplicate method in one method
 #### 2.5.1 RentalVO.java
 ``` java
+    public int getDaysRented(){
+        if(status) return calcRentedDay(new Date());
+        return daysRented;
+
+    }
     private int calcRentedDay(Date Compare){
         long diff = Compare.getTime() - rentDate.getTime();
         return (int) (diff / (1000 * 60 * 60 * 24)) + 1;
-    }
-    private int calcRegular(int rentedDay){
-        charge = 2;
-        if(rentedDay>2) charge += (rentedDay-2) * 1.5;
-        return charge;
     }
 ```
 #### 2.5.2 VideoVO.java
@@ -267,3 +267,7 @@ public class HistoryManager {
 
 ### 4.2 Rent Flow
 ![Rent](./img/Sequence_Rent.PNG)
+
+## 5. Metrics
+![image](https://user-images.githubusercontent.com/46041410/178705654-768785d9-d39e-4103-829b-ce6b724bb00b.png)
+
