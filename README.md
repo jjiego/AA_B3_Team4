@@ -6,7 +6,7 @@
 
 ## 2. Big change from origin Project
 ### 2.1 change VRUI
-```
+```java
 	public static void main(String[] args) {
 		mng = MainController.getInstance();
 		System.out.println("do");
@@ -18,7 +18,7 @@
 	}
 ```
 ### 2.2 make function list and do command with command idx
-```
+```java
     public abstract class IFunction {
         String name;
         public String funcName() {
@@ -44,7 +44,7 @@
     }
 ```
 ### 2.3 make Managers with SingleTon
-```
+```java
 public class CustomerManager {
     private static CustomerManager cMng = null;
     private List<CustomerVO> customers;
