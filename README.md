@@ -100,7 +100,154 @@ public class HistoryManager {
     }
  }
  ```
+### 2.4 seperate function in reporting method
+``` java
+        public void showHistory(String customerName) {
+            int totalCharge = 0;
+            int totalPoint = 0;
+            int nowCharge;
+            int nowPoint;
+            List<RentalVO> hitsory = HistoryManager.getInstance().getRentalHistory(customerName);
 
+            for (RentalVO rental : hitsory) {
+                nowCharge = rental.getCharge();
+                totalCharge += nowCharge;
+                nowPoint = rental.getPoint();
+                totalPoint += nowPoint;
+
+                System.out.println(
+                        "\t" + rental.getVideo().getTitle()
+                                + "\tDays rented: " + rental.getDaysRented()
+                                + "\tCharge: " + nowCharge
+                                + "\tPoint: " + nowPoint + "\n");
+            }
+            System.out.println(
+                    "Total charge: " + totalCharge
+                            + "\tTotal Point:" + totalPoint + "\n"
+            );
+            if (totalPoint >= 10) {
+                System.out.println("Congrat! You earned one free coupon");
+            }
+            if (totalPoint >= 30) {
+                System.out.println("Congrat! You earned two free coupon");
+            }
+        }
+```
+### 2.5 make duplicate method in one method
+#### 2.5.1 RentalVO.java
+``` java
+    private int calcRentedDay(Date Compare){
+        long diff = Compare.getTime() - rentDate.getTime();
+        return (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+    }
+    private int calcRegular(int rentedDay){
+        charge = 2;
+        if(rentedDay>2) charge += (rentedDay-2) * 1.5;
+        return charge;
+    }
+```
+#### 2.5.2 VideoVO.java
+```java
+    public String getInform(){
+        return "\tTitle : "+title+"\t Price"+priceCode;
+    }
+ ```
+#### 2.5.2 IFountThings.java
+```java
+    public boolean getCustomer(){
+        System.out.println("Enter customer name: ") ;
+        String customerName = scanner.next() ;
+        customer = CustomerManager.getInstance().getCustomer(customerName);
+        if(customer==null){
+            System.out.println("No customer found");
+            return false;
+        }
+        return true;
+    }
+    public boolean getVideo(){
+        String videoTitle = getVideoTitle();
+        VideoVO video = VideoManager.getInstance().getAbleVideo(videoTitle);
+        if(video == null) return false;
+        return true;
+    }
+    public String getVideoTitle(){
+        System.out.println("Enter video title to rent: ") ;
+        return scanner.next();
+    }
+ ```
+## 2.6 Store data, for use (not calculate it in RT)
+### 2.6.1 RentalVO.java
+```java
+    public RentalVO(String customerName, VideoVO video){
+        this.customerName = customerName;
+        this.video = video;
+        rentDate = new Date();
+        status = true;
+        video.setRented(true);
+        daysRented = 0;
+    }
+        public void returnVideo(){
+        if(status) {
+            returnDate = new Date();
+            status = false;
+            video.setRented(false);
+            daysRented = calcRentedDay(returnDate);
+            charge = calcCharge(daysRented);
+        }
+    }
+```
+### 2.6.2 VideoManager.java
+```java
+    public void add(String title, int videoType, int priceCode){
+        VIDEO_TYPE eVideoType = getVideoType(videoType);
+        PRICE_CODE_TYPE ePriceCode = getPriceType(priceCode);
+        int limit = getLimit(eVideoType);
+
+        VideoVO video = new VideoVO(title, eVideoType, ePriceCode, limit) ;
+
+        videoList.add(video) ;
+    }
+    private int getLimit(VIDEO_TYPE videoType){
+        switch (videoType){
+            case VHS: return 5;
+            case CD: return 3;
+            case DVD: return 2;
+            default : return 0;
+        }
+    }
+    public VIDEO_TYPE getVideoType(int type){
+        switch(type){
+            case 1: return VIDEO_TYPE.VHS;
+            case 2: return VIDEO_TYPE.CD;
+            case 3: return VIDEO_TYPE.DVD;
+        }
+        return VIDEO_TYPE.NONE;
+    }
+    public PRICE_CODE_TYPE getPriceType(int type){
+        if(type==1) return PRICE_CODE_TYPE.REGULAR;
+        return PRICE_CODE_TYPE.NEW_RELEASE;
+    }
+```
+### 2.6.3 VideoVO.java
+```java
+    public VideoVO(String title, VIDEO_TYPE videoType, PRICE_CODE_TYPE priceCode, int limit){
+        this.title = title;
+        this.videoType = videoType;
+        this.priceCode = priceCode;
+        this.registeredDate = new Date();
+        rented = false;
+        setPenallty();
+        this.limit = limit;
+    }
+    private void setPenallty(){
+        switch ( videoType ) {
+            case VHS: penallty = 1 ; break ;
+            case CD: penallty = 2 ; break ;
+            case DVD: penallty = 3 ; break ;
+            default: penallty = 0;
+        }
+    }
+```
 ## 3. Refactoring Class Diagram
 ![Refactoring](./img/ClassDiagram.png)
 
