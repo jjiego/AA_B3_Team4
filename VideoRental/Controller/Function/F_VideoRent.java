@@ -18,7 +18,7 @@ public class F_VideoRent extends Controller.Function.F_FoundThings {
     @Override
     public boolean run() {
         if(getCustomer() == false)  return false;
-        if(getVideo() == false && video.isRented() == false)     return false;
+        if(getVideo() == false && video.isRented())     return false;
 
         RentalManager.getInstance().rentVideo(customer.getName(),video);
         return false;
