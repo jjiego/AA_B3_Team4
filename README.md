@@ -1,9 +1,37 @@
 # AA_B3_Team4
+---
+## 0.Index
 
-## 1. origin Class Diagram
+1. [Origin Class Diagram](##-1.)
+2. [Big change from origin Project](##-2.)
+    1. [Change VRUI](###-2.1)
+    2. [make function list and do command with command idx](###-2.2)
+    3. [make Managers with SingleTon](###-2.3)
+       1. [CustomerManager.java](####-2.3.1)
+       2. [HistoryManager.java](####-2.3.1)
+       3. [RentalManager.java](####-2.3.1)
+       4. [VideoManager.java](####-2.3.1)
+    4. [seperate function in reporting method](###-2.4)
+    5. [make duplicate method in one method](###-2.5)
+        1. [RentalVO.java](###-2.5.1)
+        2. [VideoVO.java](###-2.5.2)
+        3. [IFountThings.java](###-2.5.3)
+    6. [Store data, for use (not calculate it in RT)](###-2.6)
+       1. [RentalVo.java](###-2.6.1)
+       2. [VideoManager.java](###-2.6.2)
+       3. [VideoVO.java](###-2.6.3)
+3. [Refactoring Class Diagram](##-3.)
+4. [Refactoring Examples](##-4.)
+    1. [Initial Creations](###-4.1)
+    2. [Rent Flow](###-4.2)
+5. [Metrics](##-5.)
+    1. [Origin](###-5.1)
+    2. [Refactoring](###-5.2)
+---
+## 1. Origin Class Diagram
 
 ![origin](./img/OriginalClassDiagram.png)
-
+---
 ## 2. Big change from origin Project
 ### 2.1 change VRUI
 ```java
@@ -92,7 +120,7 @@ public class HistoryManager {
     }
  }
 ```
-#### 2.3.3 VideoManager.java
+#### 2.3.4 VideoManager.java
 ```java
  public class VideoManager {
     private static VideoManager vMng = null;
@@ -161,7 +189,7 @@ public class HistoryManager {
         return "\tTitle : "+title+"\t Price"+priceCode;
     }
  ```
-#### 2.5.2 IFountThings.java
+#### 2.5.3 IFountThings.java
 ```java
     public boolean getCustomer(){
         System.out.println("Enter customer name: ") ;
@@ -257,9 +285,11 @@ public class HistoryManager {
         }
     }
 ```
+---
 ## 3. Refactoring Class Diagram
 ![Refactoring](./img/ClassDiagram.png)
 
+---
 ## 4. Refactoring Examples
 
 ### 4.1 Initial Creations
@@ -268,6 +298,7 @@ public class HistoryManager {
 ### 4.2 Rent Flow
 ![Rent](./img/Sequence_Rent.PNG)
 
+---
 ## 5. Metrics
 
 ### 5.1 Origin
