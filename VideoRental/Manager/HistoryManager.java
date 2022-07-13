@@ -61,5 +61,7 @@ public class HistoryManager {
                 System.out.println("Congrat! You earned two free coupon");
             }
         }
-
+    public void remove(RentalVO history) {
+        History.remove(history);
+    }
     }
