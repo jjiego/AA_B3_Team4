@@ -38,7 +38,23 @@ public class MainController {
         if(mng==null ) mng = new MainController();
         return mng;
     }
-
+    public void showCommand(){
+        int idx=0;
+        System.out.println("\nSelect a command !");
+        for(IFunction f : func){
+            System.out.println("\t "+idx+". "+f.funcName());
+            idx++;
+        }
+    }
+    public void getCommand(){
+        command = scanner.nextInt();
+    }
+    public void doCommand(){
+        quit = func.get(command).run();
+    }
+    public boolean isRun(){
+        return !this.quit;
+    }
     private void setFunction(){
         func.add(new F_Quit());
         func.add(new F_CustomerList());

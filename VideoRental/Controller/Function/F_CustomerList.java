@@ -14,6 +14,18 @@ public class F_CustomerList extends IFunction{
     }
     @Override
     public  boolean run() {
+
+        List<CustomerVO> customerList = CustomerManager.getInstance().customerList();
+        List<RentalVO> rentalList;
+
+        for (CustomerVO customer : customerList) {
+            rentalList = RentalManager.getInstance().rentalList(customer.getName());
+            System.out.println("Name: " + customer.getName() +
+                    "\tRentals: " + rentalList.size());
+            for (RentalVO rental : rentalList) {
+                System.out.print("\t" + rental.getVideo().getInform());
+            }
+        }
         return false;
     }
 }
