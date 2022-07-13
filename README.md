@@ -269,5 +269,11 @@ public class HistoryManager {
 ![Rent](./img/Sequence_Rent.PNG)
 
 ## 5. Metrics
-![image](https://user-images.githubusercontent.com/46041410/178705654-768785d9-d39e-4103-829b-ce6b724bb00b.png)
+
+### 5.1 Origin
+![origin_Metric](https://user-images.githubusercontent.com/46041410/178705898-5deb3d8a-1593-4f0c-86f6-bcad016ffc7c.png)
+
+### 5.2. Refactoring
+
+![refact_Metric](https://user-images.githubusercontent.com/46041410/178705654-768785d9-d39e-4103-829b-ce6b724bb00b.png)
 
