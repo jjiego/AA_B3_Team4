@@ -44,6 +44,7 @@
     }
 ```
 ### 2.3 make Managers with SingleTon
+#### 2.3.1 CustomerManager.java
 ```java
 public class CustomerManager {
     private static CustomerManager cMng = null;
@@ -58,7 +59,9 @@ public class CustomerManager {
         return cMng;
     }
  }
- 
+```
+#### 2.3.2 HistoryManager.java
+```java
 public class HistoryManager {
     private static HistoryManager hMng = null;
     private List<RentalVO> History;
@@ -71,6 +74,9 @@ public class HistoryManager {
         if (hMng == null) hMng = new HistoryManager();
         return hMng;
     }
+```
+#### 2.3.3 RentalManager.java
+```java
  public class RentalManager {
     private static RentalManager rMng = null;
     private List<RentalVO> rentalList;
@@ -85,6 +91,9 @@ public class HistoryManager {
         return rMng;
     }
  }
+```
+#### 2.3.3 VideoManager.java
+```java
  public class VideoManager {
     private static VideoManager vMng = null;
     private List<VideoVO> videoList;
@@ -175,8 +184,8 @@ public class HistoryManager {
         return scanner.next();
     }
  ```
-## 2.6 Store data, for use (not calculate it in RT)
-### 2.6.1 RentalVO.java
+### 2.6 Store data, for use (not calculate it in RT)
+#### 2.6.1 RentalVO.java
 ```java
     public RentalVO(String customerName, VideoVO video){
         this.customerName = customerName;
@@ -196,7 +205,7 @@ public class HistoryManager {
         }
     }
 ```
-### 2.6.2 VideoManager.java
+#### 2.6.2 VideoManager.java
 ```java
     public void add(String title, int videoType, int priceCode){
         VIDEO_TYPE eVideoType = getVideoType(videoType);
@@ -228,7 +237,7 @@ public class HistoryManager {
         return PRICE_CODE_TYPE.NEW_RELEASE;
     }
 ```
-### 2.6.3 VideoVO.java
+#### 2.6.3 VideoVO.java
 ```java
     public VideoVO(String title, VIDEO_TYPE videoType, PRICE_CODE_TYPE priceCode, int limit){
         this.title = title;
