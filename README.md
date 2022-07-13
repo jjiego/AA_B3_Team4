@@ -16,4 +16,4 @@
 ![Create](./img/Sequence_init.PNG)
 
 ### 4.2 Rent Flow
-![Rent](./img/SeSequence_Rent.PNG)
+![Rent](./img/Sequence_Rent.PNG)
