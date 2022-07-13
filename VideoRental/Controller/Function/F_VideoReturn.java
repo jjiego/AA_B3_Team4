@@ -16,6 +16,10 @@ public class F_VideoReturn extends F_FoundThings {
 
     @Override
     public boolean run() {
+        if(getCustomer() == false)  return false;
+        String videoTitle = getVideoTitle();
+        RentalManager.getInstance().returnVideo(customer.getName(),videoTitle);
+
         return false;
     }
 }

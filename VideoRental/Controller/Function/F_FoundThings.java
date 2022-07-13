@@ -16,15 +16,27 @@ public abstract class F_FoundThings extends IFunction {
     }
 
     @Override
+
     public boolean run() {return false;}
 
     public boolean getCustomer(){
+        System.out.println("Enter customer name: ") ;
+        String customerName = scanner.next() ;
+        customer = CustomerManager.getInstance().getCustomer(customerName);
+        if(customer==null){
+            System.out.println("No customer found");
+            return false;
+        }
         return true;
     }
     public boolean getVideo(){
+        String videoTitle = getVideoTitle();
+        VideoVO video = VideoManager.getInstance().getAbleVideo(videoTitle);
+        if(video == null) return false;
         return true;
     }
     public String getVideoTitle(){
-        return "";
+        System.out.println("Enter video title to rent: ") ;
+        return scanner.next();
     }
 }

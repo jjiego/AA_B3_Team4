@@ -10,6 +10,9 @@ public class F_VideoList extends IFunction {
     @Override
 
     public boolean run() {
+        System.out.println("List of videos");
+        VideoManager.getInstance().showVideoList();
+        System.out.println("End of list");
         return false;
     }
 }

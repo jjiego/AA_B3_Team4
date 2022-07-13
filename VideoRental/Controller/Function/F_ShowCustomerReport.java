@@ -12,6 +12,8 @@ public class F_ShowCustomerReport extends F_FoundThings {
 
     @Override
     public boolean run() {
+        if(getCustomer() == false) return false;
+        HistoryManager.getInstance().showHistory(customer.getName());
         return false;
     }
 }

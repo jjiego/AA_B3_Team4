@@ -10,6 +10,9 @@ public class F_CustomerRegister extends IFunction {
 
     @Override
     public boolean run() {
+        System.out.println("Enter customer name: ") ;
+        String name = scanner.next();
+        CustomerManager.getInstance().add(name);
         return false;
     }
 }
